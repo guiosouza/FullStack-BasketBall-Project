@@ -1,7 +1,5 @@
-import axios from "axios";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
-import { toast } from "react-toastify";
 
 const FormContainer = styled.form`
   display: flex;
@@ -39,84 +37,24 @@ const Button = styled.button`
   height: 42px;
 `;
 
-const Form = ({ getUsers, onEdit, setOnEdit }) => {
+const Form = ({onEdit}) => {
+
   const ref = useRef();
 
-  useEffect(() => {
-    if (onEdit) {
-      const user = ref.current;
-
-      user.nome.value = onEdit.nome;
-      user.email.value = onEdit.email;
-      user.fone.value = onEdit.fone;
-      user.data_nascimento.value = onEdit.data_nascimento;
-    }
-  }, [onEdit]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const user = ref.current;
-
-    if (
-      !user.nome.value ||
-      !user.email.value ||
-      !user.fone.value ||
-      !user.data_nascimento.value
-    ) {
-      return toast.warn("Preencha todos os campos!");
-    }
-
-    if (onEdit) {
-      await axios
-        .put("http://localhost:8800/" + onEdit.id, {
-          nome: user.nome.value,
-          email: user.email.value,
-          fone: user.fone.value,
-          data_nascimento: user.data_nascimento.value,
-        })
-        .then(({ data }) => toast.success(data))
-        .catch(({ data }) => toast.error(data));
-    } else {
-      await axios
-        .post("http://localhost:8800", {
-          nome: user.nome.value,
-          email: user.email.value,
-          fone: user.fone.value,
-          data_nascimento: user.data_nascimento.value,
-        })
-        .then(({ data }) => toast.success(data))
-        .catch(({ data }) => toast.error(data));
-    }
-
-    user.nome.value = "";
-    user.email.value = "";
-    user.fone.value = "";
-    user.data_nascimento.value = "";
-
-    setOnEdit(null);
-    getUsers();
-  };
-
   return (
-    <FormContainer ref={ref} onSubmit={handleSubmit}>
+    <FormContainer ref={ref}>
       <InputArea>
-        <Label>Nome</Label>
-        <Input name="nome" />
+        <Label>ID cidade</Label>
+        <Input name="idcidade" />
       </InputArea>
       <InputArea>
-        <Label>E-mail</Label>
-        <Input name="email" type="email" />
+        <Label>Nome da cidade</Label>
+        <Input name="nome" type="text" />
       </InputArea>
       <InputArea>
-        <Label>Telefone</Label>
+        <Label>ID da equipe</Label>
         <Input name="fone" />
       </InputArea>
-      <InputArea>
-        <Label>Data de Nascimento</Label>
-        <Input name="data_nascimento" type="date" />
-      </InputArea>
-
       <Button type="submit">SALVAR</Button>
     </FormContainer>
   );

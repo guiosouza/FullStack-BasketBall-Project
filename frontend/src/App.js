@@ -1,8 +1,8 @@
-import './App.css';
-import GlobalStyle from "./styles/global.js"
+import GlobalStyle from "./styles/global.js";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styled from "styled-components";
+import Form from "./components/Form"
 
 const Container = styled.div`
   width: 100%;
@@ -20,9 +20,8 @@ function App() {
   return (
     <>
       <Container>
-        <Title>PARTIDAS</Title>
-        <Form onEdit={onEdit} setOnEdit={setOnEdit} getUsers={getUsers} />
-        <Grid setOnEdit={setOnEdit} users={users} setUsers={setUsers} />
+        <Title>PARTIDAS</Title> 
+        <Form/>
       </Container>
       <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_LEFT} />
       <GlobalStyle />
