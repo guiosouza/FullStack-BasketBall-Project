@@ -2,7 +2,8 @@ import GlobalStyle from "./styles/global.js";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styled from "styled-components";
-import Form from "./components/Form"
+import Form from "./components/Form";
+import Grid from "./components/Grid";
 
 const Container = styled.div`
   width: 100%;
@@ -20,8 +21,9 @@ function App() {
   return (
     <>
       <Container>
-        <Title>PARTIDAS</Title> 
+        <Title>PARTIDAS DE BASQUETE</Title> 
         <Form/>
+        <Grid/>
       </Container>
       <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_LEFT} />
       <GlobalStyle />
