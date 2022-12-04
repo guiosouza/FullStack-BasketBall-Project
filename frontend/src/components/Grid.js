@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-//import { FaTrash, FaEdit } from "react-icons/fa";
+import { FaTrash, FaEdit } from "react-icons/fa";
 //import { toast } from "react-toastify";
 
 const Table = styled.table`
@@ -16,6 +16,8 @@ const Table = styled.table`
 
 export const Thead = styled.thead``;
 
+export const Tbody = styled.tbody``;
+
 export const Tr = styled.tr``;
 
 export const Th = styled.th`
@@ -27,19 +29,43 @@ export const Th = styled.th`
   }
 `;
 
-const Grid = () => {
-    return (
-        <Table>
-            <Thead>
-                <Tr>
-                    <Th>Time 1</Th>
-                    <Th onlyWeb></Th>
-                    <Th>Time 2</Th>
-                    <Th></Th>
-                </Tr>
-            </Thead>
-        </Table>
-    );
+export const Td = styled.td`
+  padding-top: 15px;
+  text-align: ${(props) => (props.alignCenter ? "center" : "start")};
+  width: ${(props) => (props.width ? props.width : "auto")};
+  @media (max-width: 500px) {
+    ${(props) => props.onlyWeb && "display: none"}
+  }
+`;
+
+const Grid = ({ cidade }) => {
+  return (
+    <Table>
+      <Thead>
+        <Tr>
+          <Th>Time 1</Th>
+          <Th onlyWeb></Th>
+          <Th>Time 2</Th>
+          <Th></Th>
+        </Tr>
+      </Thead>
+      <Tbody>
+        {cidade.map((item, i) => (
+          <Tr key={i}>
+            <Td width="30%">{item.idcidade}</Td>
+            <Td width="30%">{item.nome}</Td>
+            <Td width="30%">{item.time_idtime}</Td>
+            <Td alignCenter width="5%">
+              <FaEdit/>
+            </Td>
+            <Td alignCenter width="5%">
+              <FaTrash/>
+            </Td>
+          </Tr>
+        ))}
+      </Tbody>
+    </Table>
+  );
 };
 
 export default Grid;

@@ -53,7 +53,7 @@ const Form = ({onEdit}) => {
       </InputArea>
       <InputArea>
         <Label>ID da equipe</Label>
-        <Input name="fone" />
+        <Input name="time_idtime" />
       </InputArea>
       <Button type="submit">SALVAR</Button>
     </FormContainer>
