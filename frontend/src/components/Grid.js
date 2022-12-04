@@ -43,9 +43,9 @@ const Grid = ({ cidade }) => {
     <Table>
       <Thead>
         <Tr>
-          <Th>Time 1</Th>
-          <Th onlyWeb></Th>
-          <Th>Time 2</Th>
+          <Th>ID Cidade</Th>
+          <Th onlyWeb>Cidade</Th>
+          <Th>ID Time</Th>
           <Th></Th>
         </Tr>
       </Thead>
