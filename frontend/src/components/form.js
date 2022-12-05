@@ -1,5 +1,7 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 const FormContainer = styled.form`
   display: flex;
@@ -37,12 +39,63 @@ const Button = styled.button`
   height: 42px;
 `;
 
-const Form = ({onEdit}) => {
+const Form = ({ getCidade, onEdit, setOnEdit }) => {
 
   const ref = useRef();
 
+  useEffect(() => {
+    if (onEdit) {
+      const user = ref.current;
+
+      user.idcidade.value = onEdit.idcidade;
+      user.nome.value = onEdit.nome;
+      user.time_idtime.value = onEdit.time_idtime;
+    }
+  }, [onEdit]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const cidade = ref.current;
+
+    if (
+      !cidade.idcidade.value ||
+      !cidade.nome.value ||
+      !cidade.time_idtime.value
+    ) {
+      return toast.warn("Preencha todos os campos!");
+    }
+
+    if (onEdit) {
+      await axios
+        .put("http://localhost:8800/" + onEdit.idcidade, {
+          idcidade: cidade.idcidade.value,
+          nome: cidade.nome.value,
+          time_idtime: cidade.time_idtime.value,
+        })
+        .then(({ data }) => toast.success(data))
+        .catch(({ data }) => toast.error(data));
+    } else {
+      await axios
+        .post("http://localhost:8800", {
+          idcidade: cidade.idcidade.value,
+          nome: cidade.nome.value,
+          time_idtime: cidade.time_idtime.value,
+        })
+        .then(({ data }) => toast.success(data))
+        .catch(({ data }) => toast.error(data));
+    }
+
+    cidade.idcidade.value = "";
+    cidade.nome.value = "";
+    cidade.time_idtime.value = "";
+
+    setOnEdit(null);
+    getCidade();
+  };
+
   return (
-    <FormContainer ref={ref}>
+    <FormContainer ref={ref} onSubmit={handleSubmit} >
       <InputArea>
         <Label>ID cidade</Label>
         <Input name="idcidade" />

@@ -42,8 +42,8 @@ function App() {
     <>
       <Container>
         <Title>PARTIDAS DE BASQUETE</Title>
-        <Form />
-        <Grid cidade={cidade}/>
+        <Form onEdit={onEdit} setOnEdit={setOnEdit} getCidade={getCidade}/>
+        <Grid cidade={cidade} setCidade={setCidade} setOnEdit={setOnEdit}/>
       </Container>
       <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_LEFT} />
       <GlobalStyle />
