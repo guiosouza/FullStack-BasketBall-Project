@@ -12,8 +12,7 @@ export const getCidade = (_, res) => {
 
 
 export const addCidade = (req, res) => {
-    const q =
-        "INSERT INTO cidade (`idcidade`, `nome`, `time_idtime`) VALUES(?)";
+    const q = "INSERT INTO cidade (`idcidade`, `nome`, `time_idtime`) VALUES(?)";
 
     const values = [
         req.body.idcidade,
@@ -29,8 +28,7 @@ export const addCidade = (req, res) => {
 };
 
 export const updateCidade = (req, res) => {
-    const q =
-        "UPDATE cidade SET `nome` = ?, `time_idtime` = ?, WHERE `idcidade` = ?";
+    const q = "UPDATE cidade SET `nome` = ?, `time_idtime` = ?, WHERE `idcidade` = ?";
 
     const values = [
         req.body.idcidade,
@@ -38,7 +36,7 @@ export const updateCidade = (req, res) => {
         req.body.time_idtime,
     ];
 
-    db.query(q, [...values, req.params.id], (err) => {
+    db.query(q, [...values, req.params.idcidade], (err) => {
         if (err) return res.json(err);
 
         return res.status(200).json("Dados da cidade atualizados com sucesso.");
@@ -48,7 +46,7 @@ export const updateCidade = (req, res) => {
 export const deleteCidade = (req, res) => {
     const q = "DELETE FROM cidade WHERE `idcidade` = ?";
 
-    db.query(q, [req.params.id], (err) => {
+    db.query(q, [req.params.idcidade], (err) => {
         if (err) return res.json(err);
 
         return res.status(200).json("Cidade deletada com sucesso.");
