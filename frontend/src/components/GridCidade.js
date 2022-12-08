@@ -30,6 +30,18 @@ export const Th = styled.th`
   }
 `;
 
+export const ThTitle = styled.h3`
+  text-align: center;
+  width: 100%;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0px 0px 5px #ccc;
+  border-radius: 5px;
+  max-width: 1120px;
+  margin: 20px auto;
+  word-break: break-all;
+`
+
 export const Td = styled.td`
   padding-top: 15px;
   text-align: ${(props) => (props.alignCenter ? "center" : "start")};
@@ -39,7 +51,7 @@ export const Td = styled.td`
   }
 `;
 
-const Grid = ({ cidade, setCidade, setOnEdit }) => {
+const GridCidade = ({ cidade, setCidade, setOnEdit }) => {
 
   const handleEdit = (item) => {
     setOnEdit(item);
@@ -50,7 +62,7 @@ const Grid = ({ cidade, setCidade, setOnEdit }) => {
       .delete("http://localhost:8800/" + idcidade)
       .then(({ data }) => {
         const newArray = cidade.filter((cidade) => cidade.idcidade !== idcidade);
-        
+
         setCidade(newArray);
         toast.success(data);
       })
@@ -60,32 +72,32 @@ const Grid = ({ cidade, setCidade, setOnEdit }) => {
   };
 
   return (
-    <Table>
-      <Thead>
-        <Tr>
-          <Th>ID Cidade</Th>
-          <Th onlyWeb>Cidade</Th>
-          <Th>ID Time</Th>
-          <Th></Th>
-        </Tr>
-      </Thead>
-      <Tbody>
-        {cidade.map((item, i) => (
-          <Tr key={i}>
-            <Td width="30%">{item.idcidade}</Td>
-            <Td width="30%">{item.nome}</Td>
-            <Td width="30%">{item.time_idtime}</Td>
-            <Td alignCenter width="5%">
-              <FaEdit onClick={() => handleEdit(item)} />
-            </Td>
-            <Td alignCenter width="5%">
-              <FaTrash onClick={() => handleDelete(item.idcidade)} />
-            </Td>
+      <Table>
+        <Thead>
+          <Tr>
+            <Th>ID Cidade</Th>
+            <Th onlyWeb>Cidade</Th>
+            <Th>ID Time</Th>
+            <Th></Th>
           </Tr>
-        ))}
-      </Tbody>
-    </Table>
+        </Thead>
+        <Tbody>
+          {cidade.map((item, i) => (
+            <Tr key={i}>
+              <Td width="30%">{item.idcidade}</Td>
+              <Td width="30%">{item.nome}</Td>
+              <Td width="30%">{item.time_idtime}</Td>
+              <Td alignCenter width="5%">
+                <FaEdit onClick={() => handleEdit(item)} />
+              </Td>
+              <Td alignCenter width="5%">
+                <FaTrash onClick={() => handleDelete(item.idcidade)} />
+              </Td>
+            </Tr>
+          ))}
+        </Tbody>
+      </Table>
   );
 };
 
-export default Grid;
+export default GridCidade;

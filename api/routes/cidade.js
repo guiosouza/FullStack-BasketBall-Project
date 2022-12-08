@@ -5,10 +5,10 @@ const router = express.Router();
 
 router.get("/", getCidade);
 
-router.post("/", addCidade)
+router.post("/addcidade", addCidade);
 
-router.put("/:idcidade", updateCidade)
+router.put("/:idcidade", updateCidade);
 
-router.delete("/:idcidade", deleteCidade)
+router.delete("/:idcidade", deleteCidade);
 
 export default router;

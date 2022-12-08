@@ -39,14 +39,13 @@ const Button = styled.button`
   height: 42px;
 `;
 
-const Form = ({ getCidade, onEdit, setOnEdit }) => {
+const FormCidade = ({ getCidade, onEdit, setOnEdit }) => {
 
   const ref = useRef();
 
   useEffect(() => {
     if (onEdit) {
       const user = ref.current;
-
       user.idcidade.value = onEdit.idcidade;
       user.nome.value = onEdit.nome;
       user.time_idtime.value = onEdit.time_idtime;
@@ -113,4 +112,4 @@ const Form = ({ getCidade, onEdit, setOnEdit }) => {
   );
 };
 
-export default Form;
+export default FormCidade;
