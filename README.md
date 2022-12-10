@@ -15,10 +15,18 @@
 
 Foi construída uma API para para atender as requisições do FRONT. A Api basicamente:
 - Faz as requisições com os "controllers";
-- Define as rotas de requisições com o "routes;
+- Define as rotas de requisições com o "routes";
 
 ## FRONTEND
 
-No front temos dois containers: um para fazer as alterações nas tabelas e outro para exibir os dados do banco. Para estilização, não foram criados arquivos isolados para
-os componentes React, porém é mais aconselhável separar.
+No front temos dois `containers` estilizados: um para fazer as alterações nas tabelas e outro para exibir os dados do banco. 
+
+Observação: Para estilização, não foram criados arquivos isolados para os componentes React, porém é mais aconselhável separar.
+
+A renderização no front segue a ordem:
+
+1) App do React carrega o arquivo Rotas
+2) Rotas Carrega os componentes (inicialmente vai para o CRUD de `equipes`;
+3) O arquivo `Rotas` possui todas os caminhos para o CRUD de todas as outras tabelas;
+ 
 
