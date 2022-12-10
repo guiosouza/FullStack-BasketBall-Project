@@ -1,6 +1,6 @@
 # FullStack BasketBall Project
 
-## Schema do Banco:
+## Schema do Banco (SQL das tabelas, [aqui](https://github.com/guiosouza/FullStack-BasketBall-Project/blob/main/banco%20de%20dados/tabelas_basquete.sql)):
 
 ![image](https://user-images.githubusercontent.com/78989152/206875023-2b596c66-62c4-4be9-bea7-21d7b3d177f5.png)
 
