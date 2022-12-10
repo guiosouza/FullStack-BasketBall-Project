@@ -1,8 +1,7 @@
-import Routes from "./Routes";
-
+import Rotas from "./Rotas";
 function App() {
   return (
-    <Routes />
+    <Rotas/>
   );
 }
 

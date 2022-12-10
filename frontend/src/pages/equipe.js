@@ -7,7 +7,7 @@ import GridCidade from "../components/GridCidade";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
-import Navbar from "../components/Navbar/index.js";
+import Navbar from "../components/Navbar";
 
 
 const Container = styled.div`
@@ -22,7 +22,7 @@ const Container = styled.div`
 
 const Title = styled.h2``;
 
-function Equipe() {
+const Equipe = () => {
 
   const [cidade, setCidade] = useState([]);
   const [onEdit, setOnEdit] = useState(null);
@@ -42,7 +42,7 @@ function Equipe() {
 
   return (
     <>
-      <Navbar/>
+    <Navbar/>
       <Container>
         <Title>CADASTRO DE CIDADES E EQUIPES</Title>
         <FormCidade onEdit={onEdit} setOnEdit={setOnEdit} getCidade={getCidade} />
