@@ -11,7 +11,7 @@
 - Gerenciador das stacks: `Yarn`
 - Banco de Dados: MySQL
 
-## BANCKEND
+## BACKEND
 
 Foi construída uma API para para atender as requisições do FRONT. A Api basicamente:
 - Faz as requisições com os "controllers";
